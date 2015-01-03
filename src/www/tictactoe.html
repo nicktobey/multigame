@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<link rel="stylesheet" type="text/css" href="gui.css">
+		<title>Tic Tac Toe</title>
+	</head>
+	<body>
+<div id="board">
+	<div class="cell" onclick="game.commitOption([0,0])"></div>
+	<div class="cell" onclick="game.commitOption([0,1])"></div>
+	<div class="cell" onclick="game.commitOption([0,2])"></div>
+	<div class="cell" onclick="game.commitOption([1,0])"></div>
+	<div class="cell" onclick="game.commitOption([1,1])"></div>
+	<div class="cell" onclick="game.commitOption([1,2])"></div>
+	<div class="cell" onclick="game.commitOption([2,0])"></div>
+	<div class="cell" onclick="game.commitOption([2,1])"></div>
+	<div class="cell" onclick="game.commitOption([2,2])"></div>
+</div>
+<div id="activePlayerFrame"></div>
+
+<script type="text/javascript" src="scripts/export.js"></script>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="scripts/multigame.js"></script>
+
+<script type="text/javascript" src="scripts/gui.js"></script>
+</body>
+</html>
