@@ -1,4 +1,4 @@
-Multigame.load("tictactoe.rules.js", (game) ->
+Multigame.load("scripts/tictactoe.rules.js", (game) ->
 	$("#activePlayerFrame").html("It's player " + game.getActivePlayer() + "'s turn")
 	game.addListener ({i, j, symbol}) ->
 		console.log($("#board"))
