@@ -1,0 +1,49 @@
+X = new Player("X")
+O = new Player("O")
+
+X.opponent = O
+O.opponent = X
+
+class GridSpace extends UnownedPiece
+	constructor: (@i, @j) ->
+		@id = [@i, @j]
+		@controller = null
+		@addOption
+			id: [@i, @j]
+			condition: (player) ->
+				@controller == null
+			playerCondition: -> true
+			effect: (gamestate, player) ->
+				@controller = player
+			nextActivePlayer: player.opponent
+	
+
+# Determine whether the spot claimed a i, j created a win for the player who put it there
+win = (gamestate, i, j) ->
+	grid = gamestate.grid
+	if(grid[i][0].controller is grid[i][1].controller is grid[i][2].controller)
+		return true
+	if(grid[0][j].controller is grid[1][j].controller is grid[2][j].controller)
+		return true
+	if(i == j and grid[0][0].controller is grid[1][1].controller is grid[2][2].controller)
+		return true
+	if(i + j == 2 and grid[0][2].controller is grid[1][1].controller is grid[2][0].controller)
+		return true
+	return false	
+
+draw = (gamestate) ->
+	grid = gamestate.grid
+	for i in [0..2]
+		for j in [0..2]
+			if grid[i][j].controller is null
+				return false
+	return true
+	
+#Further steps: do something when game ends.
+#Mention how this setup allows easy AI or network play
+
+
+players: [X, O]
+activePlayer: X
+initialize: ->
+	((new GridSpace(i, j) for i in [0..2]) for j in [0..2]).reduce (a,b) -> a.concat(b)

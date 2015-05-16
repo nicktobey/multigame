@@ -1,0 +1,23 @@
+class GameState 
+..   addProperty: (name, value) -> 
+..     rootState = this 
+..     newGameState = Object.create(this) 
+..     Object.defineProperty(newGameState, name, { 
+..       get: -> 
+..         if @hasOwnProperty name 
+..           value 
+..         else 
+..           Object.defineProperty(this, name, 
+..             value: value 
+..             writable: true 
+..           ) 
+..           value 
+..       set: (newValue) -> 
+..         if this == rootState 
+..           value = newValue 
+..         else 
+..           Object.defineProperty(this, name, 
+..             value: newValue 
+..             writable: true 
+..           ) 
+..     }) 
